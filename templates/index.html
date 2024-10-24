@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Головна</a></li>
+            <li><a href="#courses">Курси</a></li>
+            <li><a href="#contact">Контакти</a></li>
+        </ul>
+    </nav>
+    <div class="header-content">
+        <h1>Ласкаво просимо на навчальну платформу</h1>
+        <p>Отримайте знання з медіаграмотності та інформаційної безпеки.</p>
+        <a href="#courses" class="btn">Дізнатися більше</a>
+    </div>
+</header>
+
+<main>
+    <section id="about">
+        <h2>Про платформу</h2>
+        <p>Наша платформа допомагає школярам та студентам оволодіти навичками інформаційної безпеки та медіаграмотності, що є невід'ємними складовими сучасної освіти.</p>
+    </section>
+
+    <section id="courses">
+        <h2>Наші курси</h2>
+        <div class="course">
+            <h3>Основи інформаційної безпеки</h3>
+            <p>Тривалість: 4 тижні</p>
+            <button>Детальніше</button>
+        </div>
+        <div class="course">
+            <h3>Медіаграмотність для всіх</h3>
+            <p>Тривалість: 3 тижні</p>
+            <button>Детальніше</button>
+        </div>
+        <div class="course">
+            <h3>Програмування на Python</h3>
+            <p>Тривалість: 5 тижнів</p>
+            <button>Детальніше</button>
+        </div>
+    </section>
+</main>
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: info@platform.com</p>
+    <p>Телефон: +380 50 123 4567</p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>
