@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі курсу</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Отримуємо ім'я з localStorage
+            let name = localStorage.getItem('userName');
+
+            // Виводимо привітання, якщо ім'я знайдено
+            if (name) {
+                document.getElementById('welcomeMessage').innerText = "Ласкаво просимо, " + name + ", ви успішно зареєструвались на курс!";
+            }
+
+            // Перевірка завершення лекційного матеріалу
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+
+            // Знаходимо всі кнопки "Пройти тестування" та контролюємо їх видимість
+            const testButtons = document.querySelectorAll('.btn.test');
+            testButtons.forEach((button, index) => {
+                button.style.display = lecturesCompleted[index] ? 'inline-block' : 'none'; // Показуємо або ховаємо кнопку
+            });
+        });
+
+        function markLectureAsCompleted(index) {
+            // Функція для маркування лекції як завершеної
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+            lecturesCompleted[index] = true; // Мітка лекції як завершеної
+            localStorage.setItem('lecturesCompleted', JSON.stringify(lecturesCompleted));
+
+            // Перевірка видимості кнопок після завершення
+            const testButtons = document.querySelectorAll('.btn.test');
+            testButtons.forEach((button, i) => {
+                button.style.display = lecturesCompleted[i] ? 'inline-block' : 'none'; // Дозволяємо кнопки
+            });
+        }
+
+        // Функція для отримання даних з Local Storage
+        function loadQuizAnswers() {
+            const question1Answer = localStorage.getItem('question1');
+            const question2Answer = localStorage.getItem('question2');
+
+            if (question1Answer) {
+                const question1Option = document.querySelector(`input[name="question1"][value="${question1Answer}"]`);
+                if (question1Option) {
+                    question1Option.checked = true;
+                }
+            }
+
+            if (question2Answer) {
+                const question2Option = document.querySelector(`input[name="question2"][value="${question2Answer}"]`);
+                if (question2Option) {
+                    question2Option.checked = true;
+                }
+            }
+        }
+
+        window.onload = loadQuizAnswers;
+
+               // Функція для перегляду даних з Local Storage
+        function viewLocalStorageData() {
+            const userName = localStorage.getItem('userName') || 'Не знайдено';
+            const courseScore = localStorage.getItem('courseScore') || 'Не оцінено';
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+
+            let completedLectures = Object.keys(lecturesCompleted)
+                .filter(key => lecturesCompleted[key])
+                .map(index => `Лекція ${parseInt(index) + 1}`)
+                .join(', ') || 'Жодна лекція не завершена';
+
+            alert(`Ім'я: ${userName}\nБали за тест: ${courseScore}\nЗавершені лекції: ${completedLectures}`);
+        }
+
+    </script>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Закрити курс і перейти на головну сторінку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="course-details">
+        <h1 id="welcomeMessage"></h1>
+        <h2>Теми курсу</h2>
+        <div class="course">
+            <h3>Основи інформаційної безпеки</h3>
+            <a href="curs_tem/Basics of information security.html" class="btn" onclick="markLectureAsCompleted(0)">Переглянути лекційний матеріал</a>
+            <a href="curs_tem/Basics of information security_test.html" class="btn test" style="display: none;">Пройти тестування</a>
+        </div>
+        <div class="course">
+            <h3>Медіаграмотність для учнів</h3>
+            <a href="curs_tem/media_literacy.html" class="btn" onclick="markLectureAsCompleted(1)">Переглянути лекційний матеріал</a>
+            <a href="curs_tem/media_literacy_test.html" class="btn test" style="display: none;">Пройти тестування</a>
+        </div>
+        <div class="course">
+            <h3>Безпека в Інтернеті</h3>
+            <a href="curs_tem/internet_safety.html" class="btn" onclick="markLectureAsCompleted(2)">Переглянути лекційний матеріал</a>
+            <a href="curs_tem/internet_safety_test.html" class="btn test" style="display: none;">Пройти тестування</a>
+        </div>
+        <div class="course">
+            <h3>Заліковий тест по курсу</h3>
+            <a href="curs_tem/final_test.html" class="btn" onclick="markLectureAsCompleted(3)">Почати тестування</a>
+        </div>
+        <button class="btn" onclick="viewLocalStorageData()">Переглянути дані з Local Storage</button>
+    </section>
+</main>
+
+<footer>
+    <h2>Контакти</h2>
+    <p>Email: info@platform.com</p>
+    <p>Телефон: +380 50 123 4567</p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>

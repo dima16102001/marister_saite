@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="courses.html">Курси</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+    <div class="header-content">
+        <h1>Ласкаво просимо на навчальну платформу</h1>
+        <p>Отримайте знання з медіаграмотності та інформаційної безпеки.</p>
+        <a href="courses.html" class="btn">Дізнатися більше</a>
+    </div>
+</header>
+
+<main>
+    <h2>Про платформу</h2>
+    <section id="about">
+        <p>Наша платформа допомагає школярам та студентам оволодіти навичками інформаційної безпеки та медіаграмотності, що є невід'ємними складовими сучасної освіти.</p>
+    </section>
+</main>
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: info@platform.com</p>
+    <p>Телефон: +380 50 123 4567</p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+<script>
+    // Видалення даних з локального сховища після входу
+    if (localStorage) {
+        localStorage.clear(); // Очищає все дані в локальному сховищі
+        console.log("Дані локального сховища видалено.");
+    }
+</script>
+
+</body>
+</html>

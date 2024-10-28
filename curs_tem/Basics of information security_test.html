@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .quiz {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            display: flex;
+            margin-left: 12%;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 10%;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Основи інформаційної безпеки Тест</h1>
+    </div>
+</header>
+
+<h1>Тести</h1>
+
+<div class="quiz">
+    <div class="question">1. Що таке інформаційна безпека?</div>
+    <ul class="options">
+        <li><input type="radio" name="question1" value="Захист фізичних приміщень"> Захист фізичних приміщень</li>
+        <li><input type="radio" name="question1" value="Захист інформації від несанкціонованого доступу"> Захист інформації від несанкціонованого доступу</li>
+        <li><input type="radio" name="question1" value="Правила користування комп'ютером"> Правила користування комп'ютером</li>
+    </ul>
+</div>
+
+<div class="quiz">
+    <div class="question">2. Яка з наведених загроз є прикладом кібернападу?</div>
+    <ul class="options">
+        <li><input type="radio" name="question2" value="Пожежа в офісі"> Пожежа в офісі</li>
+        <li><input type="radio" name="question2" value="Фішинг"> Фішинг</li>
+        <li><input type="radio" name="question2" value="Втеча співробітників"> Втеча співробітників</li>
+    </ul>
+</div>
+
+<div class="quiz">
+    <div class="question">3. Яка роль антивірусного програмного забезпечення в інформаційній безпеці?</div>
+    <ul class="options">
+        <li><input type="radio" name="question3" value="Запобігання несанкціонованому доступу до мережі"> Запобігання несанкціонованому доступу до мережі</li>
+        <li><input type="radio" name="question3" value="Виявлення та видалення шкідливих програм"> Виявлення та видалення шкідливих програм</li>
+        <li><input type="radio" name="question3" value="Керування паролями"> Керування паролями</li>
+    </ul>
+</div>
+
+<div class="quiz">
+    <div class="question">4. Що таке шифрування?</div>
+    <ul class="options">
+        <li><input type="radio" name="question4" value="Процес зберігання інформації"> Процес зберігання інформації</li>
+        <li><input type="radio" name="question4" value="Процес перетворення даних у недоступний для читання формат"> Процес перетворення даних у недоступний для читання формат</li>
+        <li><input type="radio" name="question4" value="Процес видалення даних"> Процес видалення даних</li>
+    </ul>
+</div>
+
+<div class="quiz">
+    <div class="question">5. Яка загроза виникає, коли зловмисник видає себе за довірену особу для отримання конфіденційної інформації?</div>
+    <ul class="options">
+        <li><input type="radio" name="question5" value="Спам"> Спам</li>
+        <li><input type="radio" name="question5" value="Соціальна інженерія"> Соціальна інженерія</li>
+        <li><input type="radio" name="question5" value="Вірус"> Вірус</li>
+    </ul>
+</div>
+
+<h2>Надіслати відповіді</h2>
+<div class="button-container">
+    <button type="button" class="btn" onclick="submitQuiz()">Завершити</button>
+</div>
+
+<script>
+    function submitQuiz() {
+        const question1 = document.querySelector('input[name="question1"]:checked');
+        const question2 = document.querySelector('input[name="question2"]:checked');
+        const question3 = document.querySelector('input[name="question3"]:checked');
+        const question4 = document.querySelector('input[name="question4"]:checked');
+        const question5 = document.querySelector('input[name="question5"]:checked');
+
+        let score = 0;
+
+        // Перевірка першого питання
+        if (question1) {
+            if (question1.value === "Захист інформації від несанкціонованого доступу") {
+                score += 1; // Додаємо бал
+            }
+        } else {
+            alert("Будь ласка, виберіть відповідь на перше питання.");
+            return;
+        }
+
+        // Перевірка другого питання
+        if (question2) {
+            if (question2.value === "Фішинг") {
+                score += 1; // Додаємо бал
+            }
+        } else {
+            alert("Будь ласка, виберіть відповідь на друге питання.");
+            return;
+        }
+
+        // Перевірка третього питання
+        if (question3) {
+            if (question3.value === "Виявлення та видалення шкідливих програм") {
+                score += 1; // Додаємо бал
+            }
+        } else {
+            alert("Будь ласка, виберіть відповідь на третє питання.");
+            return;
+        }
+
+        // Перевірка четвертого питання
+        if (question4) {
+            if (question4.value === "Процес перетворення даних у недоступний для читання формат") {
+                score += 1; // Додаємо бал
+            }
+        } else {
+            alert("Будь ласка, виберіть відповідь на четверте питання.");
+            return;
+        }
+
+        // Перевірка п'ятого питання
+        if (question5) {
+            if (question5.value === "Соціальна інженерія") {
+                score += 1; // Додаємо бал
+            }
+        } else {
+            alert("Будь ласка, виберіть відповідь на п'яте питання.");
+            return;
+        }
+
+        // Зберігаємо лише кількість балів у Local Storage
+        localStorage.setItem('courseScore', score.toString());
+
+        // Показуємо повідомлення про успішне збереження
+        alert("Ваші бали збережено: " + score + "!");
+        
+        // За потреби, можна перенаправити на іншу сторінку
+        window.location.href = "../course-details.html";
+    }
+</script>
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: info@platform.com</p>
+    <p>Телефон: +380 50 123 4567</p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>

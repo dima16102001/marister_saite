@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+                      /* Базовий стиль для контейнера відео */
+            #video-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 1200px;
+                margin: auto;
+            }
+
+            /* Базовий стиль для відео */
+            .video-frame {
+                width: 100%;
+                height: 500px;
+                display: flex;
+                justify-content: center;
+
+            }
+
+            /* Налаштування для маленьких екранів (до 600px) */
+            @media (max-width: 300px) {
+                .video-frame {
+                    height: 100px;
+                    display: flex;
+                }
+            }
+
+            /* Налаштування для середніх екранів (до 900px) */
+            @media (max-width: 900px) {
+                .video-frame {
+                    height: 300px;
+                    display: flex;
+                }
+            }
+        .button-container {
+            display: flex; /* Використання Flexbox для горизонтального вирівнювання кнопок */
+            justify-content: center; /* Центрує кнопки по горизонталі */
+            margin-top: 20px; /* Відступ зверху для кнопок */
+        }
+
+        .prev-button,
+        .next-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 2px; /* Відступ між кнопками */
+        }
+
+        .prev-button:hover,
+        .next-button:hover {
+            background-color: #0056b3; /* Зміна кольору при наведенні */
+        }
+    </style>
+    <script>
+        // Масив з посиланнями на YouTube відео
+        const videos = [
+            "https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/9IfA5JHXFzo?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/N6q4sRHeFi4?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/emss56p9PT0?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/uNFAkn_C1SM?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/l_-_Fblp470?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/dUFvMPpOO1Q?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/zoYSCIbgxsk?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/H_UolX8Rgl4?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/3GhnBs067Lg?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/fptPLvRlXzs?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/dqq6Et5eS4s?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F", 
+            "https://www.youtube.com/embed/Zd8iiiHgWbE?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/euWkITYqjEw?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/y-CF8bozZd8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/8cB1VXW13kU?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F"
+        ];
+
+        let currentVideoIndex = 0;
+
+        // Функція для зміни відео
+        function changeVideo(direction) {
+            currentVideoIndex += direction; // Зміна індексу на основі напрямку
+            if (currentVideoIndex < 0) {
+                currentVideoIndex = videos.length - 1; // Повертаємось до останнього відео
+            } else if (currentVideoIndex >= videos.length) {
+                currentVideoIndex = 0; // Повертаємось до першого відео
+            }
+            const videoFrame = document.getElementById("video-frame");
+            videoFrame.src = videos[currentVideoIndex];
+        }
+
+        window.onload = function() {
+            document.getElementById("next-button").addEventListener("click", function() {
+                changeVideo(1); // Наступне відео
+            });
+            document.getElementById("prev-button").addEventListener("click", function() {
+                changeVideo(-1); // Попереднє відео
+            });
+        };
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Основи інформаційної безпеки</h1>
+    </div>
+</header>
+
+<main>
+    <section id="course-details">
+        <h1>Список відео "Основи інформаційної безпеки"</h1>
+            <div id="video-container">
+                <iframe id="video-frame" class="video-frame" src="https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F" title="Основи інформаційної безпеки. Промо" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="button-container">
+            <button class="prev-button" id="prev-button">Попереднє відео</button>
+            <button class="next-button" id="next-button">Наступне відео</button>
+            <a href="../course-details.html" class="btn">Завершити</a>
+        </div>
+    </section>
+</main>
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: info@platform.com</p>
+    <p>Телефон: +380 50 123 4567</p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>
