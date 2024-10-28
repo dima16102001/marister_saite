@@ -6,6 +6,34 @@
     <title>Навчальна платформа</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
+                 /* Базовий стиль для контейнера відео */
+            #video-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 1200px;
+                margin: auto;
+            }
+
+            /* Базовий стиль для відео */
+            .video-frame {
+                width: 100%;
+                height: 500px;
+            }
+
+            /* Налаштування для маленьких екранів (до 600px) */
+            @media (max-width: 600px) {
+                .video-frame {
+                    height: 200px;
+                }
+            }
+
+            /* Налаштування для середніх екранів (до 900px) */
+            @media (max-width: 1000px) {
+                .video-frame {
+                    height: 400px;
+                }
+            }
         .button-container {
             display: flex; /* Використання Flexbox для горизонтального вирівнювання кнопок */
             justify-content: center; /* Центрує кнопки по горизонталі */
@@ -86,8 +114,8 @@
 <main>
     <section id="course-details">
         <h1>Список відео "Основи інформаційної безпеки"</h1>
-        <div id="video-container">
-            <iframe id="video-frame" width="700" height="400" src="https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F" title="Основи інформаційної безпеки. Промо" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div id="video-container">
+                <iframe id="video-frame" class="video-frame" src="https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F" title="Основи інформаційної безпеки. Промо" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="button-container">
             <button class="prev-button" id="prev-button">Попереднє відео</button>
