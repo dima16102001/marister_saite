@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі курсу</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Отримуємо ім'я з localStorage
+            let name = localStorage.getItem('userName');
+
+            // Виводимо привітання, якщо ім'я знайдено
+            if (name) {
+                document.getElementById('welcomeMessage').innerText = "Ласкаво просимо, " + name + ", ви успішно зареєструвались на курс!";
+            }
+
+            // Перевірка завершення лекційного матеріалу
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+
+            // Знаходимо всі кнопки "Пройти тестування" та контролюємо їх видимість
+            const testButton = document.querySelector('.btn.test');
+            const completedCount = Object.keys(lecturesCompleted).filter(key => lecturesCompleted[key]).length;
+
+            // Показуємо або ховаємо кнопку в залежності від кількості завершених лекцій
+            const testMessage = document.getElementById('testMessage'); // Отримуємо елемент з повідомленням
+            if (completedCount >= 2) {
+                testButton.style.display = 'inline-block'; // Показуємо кнопку
+                testMessage.style.display = 'none'; // Ховаємо повідомлення
+            } else {
+                testButton.style.display = 'none'; // Ховаємо кнопку
+                testMessage.style.display = 'block'; // Показуємо повідомлення
+            }
+        });
+
+        function markLectureAsCompleted(index) {
+            // Функція для маркування лекції як завершеної
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+            lecturesCompleted[index] = true; // Мітка лекції як завершеної
+            localStorage.setItem('lecturesCompleted', JSON.stringify(lecturesCompleted));
+
+            // Перевірка видимості кнопки та повідомлення після завершення
+            const testButton = document.querySelector('.btn.test');
+            const completedCount = Object.keys(lecturesCompleted).filter(key => lecturesCompleted[key]).length;
+            const testMessage = document.getElementById('testMessage'); // Отримуємо елемент з повідомленням
+
+            // Показуємо або ховаємо кнопку в залежності від кількості завершених лекцій
+            if (completedCount >= 2) {
+                testButton.style.display = 'inline-block'; // Показуємо кнопку
+                testMessage.style.display = 'none'; // Ховаємо повідомлення
+            } else {
+                testButton.style.display = 'none'; // Ховаємо кнопку
+                testMessage.style.display = 'block'; // Показуємо повідомлення
+            }
+        }
+
+        // Функція для отримання даних з Local Storage
+        function loadQuizAnswers() {
+
+            if (question1Answer) {
+                const question1Option = document.querySelector(`input[name="question1"][value="${question1Answer}"]`);
+                if (question1Option) {
+                    question1Option.checked = true;
+                }
+            }
+
+            if (question2Answer) {
+                const question2Option = document.querySelector(`input[name="question2"][value="${question2Answer}"]`);
+                if (question2Option) {
+                    question2Option.checked = true;
+                }
+            }
+        }
+
+        window.onload = loadQuizAnswers;
+
+        // Функція для перегляду даних з Local Storage
+        function viewLocalStorageData() {
+            const userName = localStorage.getItem('userName') || 'Не знайдено';
+            const courseScore = localStorage.getItem('courseScore') || 'Не оцінено';
+            const lecturesCompleted = JSON.parse(localStorage.getItem('lecturesCompleted')) || {};
+
+            let completedLectures = Object.keys(lecturesCompleted)
+                .filter(key => lecturesCompleted[key])
+                .map(index => `Лекція ${parseInt(index) + 1}`)
+                .join(', ') || 'Жодна лекція не завершена';
+
+            alert(`Ім'я: ${userName}\n`);
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Закрити курс і перейти на головну сторінку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="course-details">
+        <h1 id="welcomeMessage"></h1>
+        <h2>Теми курсу</h2>
+        <div class="course">
+            <h3>Основи інформаційної безпеки</h3>
+            <a href="curs_tem/Basics of information security.html" class="btn" onclick="markLectureAsCompleted(0)">Переглянути лекційний матеріал</a>
+        </div>
+        <div class="course">
+            <h3>Основи медіаграмотності</h3>
+            <a href="curs_tem/Media literacy for students.html" class="btn" onclick="markLectureAsCompleted(1)">Переглянути лекційний матеріал</a>
+        </div>
+        <div class="course">
+            <h3>Заліковий тест по курсу</h3>
+            <p id="testMessage" style="color:red;">Заліковий тест з'явиться після перегляду лекційного матеріалу</p>
+            <a href="curs_tem/zal_test.html" class="btn test" style="display: none;">Пройти тестування</a>
+        </div>
+  
+    </section>
+</main>
+
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Сертифікат</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f7ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .certificate {
+            width: 632px; /* Збільшено ширину для горизонтального формату */
+            height: 447px; /* Збільшено висоту для горизонтального формату */
+            border: 10px solid #28a745; /* Зелений колір рамки */
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 { 
+            font-size: 2.5em; 
+            color: #28a745; /* Зелений колір заголовка */
+        }
+        .name { 
+            font-size: 1.8em; 
+            margin: 20px 0; 
+            font-weight: bold; 
+        }
+        .date { 
+            position: absolute; 
+            bottom: 20px; 
+            right: 20px; 
+            font-size: 1.2em; 
+        }
+        .bal { 
+            font-size: 1.8em; 
+            margin: 10px 0; 
+            font-weight: bold; 
+            color: #28a745; /* Зелений колір для оцінки */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745; /* Зелений колір кнопки */
+            color: #ffffff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838; /* Темніший зелений колір при наведенні */
+        }
+    </style>
+</head>
+<body>
+
+<div class="certificate" id="certificate">
+    <h1>Сертифікат про проходження курсу</h1>
+    <h2>"Основи інформаційної безпеки та медіаграмотність"</h2>
+    <div class="name" id="name">Ім'я Призвище</div>
+    <h2>Оцінка</h2>
+    <div class="bal" id="bal"></div>
+    <div class="date" id="date">Дата: __/__/____</div>
+</div>
+
+<button onclick="generateCertificate()">Згенерувати сертифікат</button>
+<button onclick="downloadPDF()">Завантажити PDF</button>
+
+<script>
+    function generateCertificate() {
+        let name = localStorage.getItem('userName') || "Ім'я Призвище";
+        let bal = parseInt(localStorage.getItem('testScore')) || 0;
+        const date = new Date().toLocaleDateString();
+
+        document.getElementById('name').innerText = name;
+        document.getElementById('bal').innerText = getGrade(bal);
+        document.getElementById('date').innerText = `Дата: ${date}`;
+    }
+
+    function getGrade(score) {
+        if (score < 14) {
+            return 'Задовільно';
+        } else if (score < 17) {
+            return 'Добре';
+        } else {
+            return 'Відмінно';
+        }
+    }
+
+    function downloadPDF() {
+        const element = document.getElementById('certificate');
+        const opt = {
+            margin: 0,
+            filename: 'certificate.pdf',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'px', format: 'a4', orientation: 'landscape' } // Зміна формату на горизонтальний
+        };
+
+        html2pdf()
+            .from(element)
+            .set(opt)
+            .save();
+    }
+</script>
+
+</body>
+</html>

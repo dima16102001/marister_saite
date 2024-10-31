@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="../styles.css">
+  <script>
+        // Масив з посиланнями на YouTube відео
+        const videos = [
+            "https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/9IfA5JHXFzo?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/N6q4sRHeFi4?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/emss56p9PT0?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/uNFAkn_C1SM?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/l_-_Fblp470?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/dUFvMPpOO1Q?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/zoYSCIbgxsk?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/H_UolX8Rgl4?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/3GhnBs067Lg?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/fptPLvRlXzs?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/dqq6Et5eS4s?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F", 
+            "https://www.youtube.com/embed/Zd8iiiHgWbE?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/euWkITYqjEw?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/y-CF8bozZd8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F",
+            "https://www.youtube.com/embed/8cB1VXW13kU?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F"
+        ];
+
+        let currentVideoIndex = 0;
+        let viewedVideosCount = 0; // Лічильник переглянутих відео
+
+        // Функція для зміни відео
+        function changeVideo(direction) {
+            currentVideoIndex += direction; // Зміна індексу на основі напрямку
+            if (currentVideoIndex < 0) {
+                currentVideoIndex = videos.length - 1; // Повертаємось до останнього відео
+            } else if (currentVideoIndex >= videos.length) {
+                currentVideoIndex = 0; // Повертаємось до першого відео
+            }
+            const videoFrame = document.getElementById("video-frame");
+            videoFrame.src = videos[currentVideoIndex];
+
+            // Перевірка на перегляд відео
+            if (direction === 1 && viewedVideosCount < videos.length) {
+                viewedVideosCount++; // Збільшуємо лічильник переглянутих відео
+            }
+
+            // Показуємо кнопку завершення, якщо переглянуті всі відео
+            if (viewedVideosCount === videos.length) {
+                document.getElementById("finish-button").style.display = "block";
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("next-button").addEventListener("click", function() {
+                changeVideo(1); // Наступне відео
+            });
+            document.getElementById("prev-button").addEventListener("click", function() {
+                changeVideo(-1); // Попереднє відео
+            });
+
+            // Приховуємо кнопку завершення на старті
+            document.getElementById("finish-button").style.display = "none";
+        };
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Основи інформаційної безпеки</h1>
+    </div>
+</header>
+  
+    <div class="container">
+        <h1>Iнформаційної безпека</h1>
+
+        <div class="section">
+            <p>Інформаційна безпека — це комплекс заходів, спрямованих на захист інформації та інформаційних систем від загроз, які можуть призвести до втрати конфіденційності, цілісності чи доступності даних. У сучасному цифровому середовищі навички інформаційної безпеки є надзвичайно важливими як для особистої безпеки, так і для безпеки організацій та суспільства загалом.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. Що таке інформаційна безпека?</h2>
+            <p>Інформаційна безпека — це здатність захистити важливі дані від несанкціонованого доступу, змін чи знищення. Зважаючи на значний обсяг даних, які щоденно створюються, обробляються та передаються, ризики порушення безпеки постійно зростають. Система захисту інформації включає в себе технічні засоби, як-от антивіруси та фаєрволи, а також методи управління доступом, навчання користувачів і дотримання правил безпеки.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Основні принципи інформаційної безпеки</h2>
+            <p>Інформаційна безпека базується на трьох основних принципах, які часто позначаються абревіатурою <strong>CIA</strong>:</p>
+            <ul>
+                <li><strong>Конфіденційність (Confidentiality)</strong> — забезпечує, що інформація доступна лише тим, хто має дозвіл на доступ. Це особливо важливо для персональних, фінансових і медичних даних.</li>
+                <li><strong>Цілісність (Integrity)</strong> — захист даних від несанкціонованих змін та пошкоджень. Забезпечення цілісності інформації дозволяє зберігати дані в первісному вигляді і захищає від навмисних спотворень.</li>
+                <li><strong>Доступність (Availability)</strong> — гарантує, що інформація та ресурси доступні користувачам, які мають до них доступ, у потрібний момент, навіть при збоях в роботі систем або атаках.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Загрози інформаційній безпеці</h2>
+            <p>У цифровому середовищі існує безліч загроз інформаційній безпеці, серед яких найпоширенішими є:</p>
+            <ul>
+                <li><strong>Фішинг</strong> — вид шахрайства, коли зловмисники намагаються отримати конфіденційну інформацію, надсилаючи підроблені повідомлення, що імітують відомі організації. Важливо бути обережним, особливо з електронними листами, які запитують особисту або фінансову інформацію.</li>
+                <li><strong>Віруси та шкідливе програмне забезпечення (шкідники)</strong> — програми, які можуть пошкодити комп'ютер або викрасти з нього дані. Шкідливі програми часто поширюються через підозрілі вебсайти та вкладення в листах.</li>
+                <li><strong>Кібератаки</strong> — спроби отримати доступ до мереж або систем з метою викрадення інформації, фінансових ресурсів або завдання шкоди. Атаки можуть бути організовані окремими особами або групами, які прагнуть отримати економічну або політичну вигоду.</li>
+                <li><strong>Соціальна інженерія</strong> — психологічні маніпуляції, які змушують користувачів розголошувати конфіденційну інформацію. Наприклад, телефонні шахраї можуть видавати себе за представників банку і запитувати інформацію про рахунок.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Основні правила безпечної поведінки в Інтернеті</h2>
+            <ul>
+                <li><strong>Сильні паролі</strong>: Використовуйте унікальні та складні паролі для різних облікових записів, які містять великі та малі літери, цифри та спеціальні символи. Використання паролів дозволяє значно ускладнити злам облікового запису.</li>
+                <li><strong>Двофакторна аутентифікація (2FA)</strong>: Завжди активуйте двофакторну аутентифікацію на важливих акаунтах. Це додає додатковий рівень захисту, особливо вразливих до атак облікових записів.</li>
+                <li><strong>Обережність з особистою інформацією</strong>: Не розголошуйте свої особисті дані в соціальних мережах та на невідомих вебсайтах. Інформація, якою ви ділитеся в Інтернеті, може бути використана зловмисниками для шахрайства.</li>
+                <li><strong>Антивірусне програмне забезпечення</strong>: Встановіть антивірусні програми на пристрої та регулярно оновлюйте їх. Антивірусні програми допомагають виявляти шкідливі програми та блокувати потенційні загрози.</li>
+                <li><strong>Не відкривати підозрілі файли та посилання</strong>: Якщо отримали повідомлення чи лист від невідомого відправника, не відкривайте вкладення та не переходьте за посиланнями. Це може захистити вас від фішингових атак і шкідливих програм.</li>
+                <li><strong>Резервне копіювання даних</strong>: Робіть резервні копії важливих даних для захисту від втрати або пошкодження. Регулярне резервне копіювання гарантує, що дані можуть бути відновлені у разі збоїв чи атак.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. Роль соціальних мереж в інформаційній безпеці</h2>
+            <p>Соціальні мережі стали важливою частиною нашого життя, але вони також несуть ризики для безпеки. Часто користувачі несвідомо діляться особистою інформацією, яка може бути використана для шахрайства або інших шкідливих дій. Користувачі повинні обмежувати доступ до своїх профілів, уникати спілкування з невідомими особами та критично ставитись до повідомлень від незнайомців.</p>
+        </div>
+
+        <div class="section">
+            <h2>Висновок</h2>
+            <p>Інформаційна безпека є важливим аспектом сучасного життя, і кожен користувач має дотримуватись базових правил безпеки для захисту себе та своїх даних. Навички інформаційної безпеки допоможуть уникати основних ризиків, пов’язаних з цифровим середовищем, та ефективно протистояти загрозам.</p>
+        </div>
+    </div>
+
+<main>
+    <section id="course-details">
+        <h1>Для проходження курсу пергляньте відеоролики "Основи інформаційної безпеки"</h1>
+            <div id="video-container">
+                <iframe id="video-frame" class="video-frame" src="https://www.youtube.com/embed/tAPydgBAZl8?list=PLAvm1izGJsrwbsodRyqHihcCs7tbFfP5F" title="Основи інформаційної безпеки. Промо" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="button-container">
+            <button class="prev-button" id="prev-button">Попереднє відео</button>
+            <button class="next-button" id="next-button">Наступне відео</button>
+            <a href="../course-details.html" class="btn" id="finish-button">Завершити</a>
+        </div>
+        <h3 style="color:red;">Щоб завершити перегляньте всі відео</h3>
+    </section>
+</main>
+
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+</body>
+</html>

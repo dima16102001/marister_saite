@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація на курс</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f7ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Висота на весь екран */
+            margin: 0; /* Відсутні відступи */
+        }
+        .registration-container {
+            width: 500px; /* Змінена ширина контейнера */
+            padding: 40px; /* Внутрішні відступи */
+            background-color: #ffffff;
+            border-radius: 10px; /* Закруглені кути */
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2); /* Тінь для глибини */
+            text-align: center; /* Центрування тексту */
+        }
+        .registration-container input[type="text"],
+        .registration-container button {
+            padding: 12px; /* Внутрішні відступи */
+            width: 100%; /* Заповнення ширини контейнера */
+            margin-top: 15px; /* Відступ між елементами */
+            font-size: 16px; /* Розмір шрифту */
+            border: 2px solid #ced4da; /* Колір рамки */
+            border-radius: 4px; /* Закруглені кути для полів */
+        }
+        .registration-container button {
+            background-color: #4CAF50; /* Зелений фон кнопки */
+            color: #fff; /* Білий текст */
+            border: none; /* Без рамки */
+            cursor: pointer; /* Показує, що елемент клікабельний */
+            transition: background-color 0.3s; /* Анімація переходу */
+        }
+        .registration-container button:hover {
+            background-color: #45a049; /* Темніший зелений при наведенні */
+        }
+        h2 {
+            color: #4CAF50; /* Колір заголовка */
+            margin: 0; /* Відсутні відступи */
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Реєстрація на курс</h2>
+        <form id="registrationForm">
+            <label for="name">Ваше ім'я:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <button type="button" id="button_1">Перейти до курсу</button>
+        </form>
+    </div>
+
+    <script>
+        let but = document.querySelector('#button_1'); // Виправлено ідентифікатор
+        let nameInput = document.querySelector('#name');
+
+        but.addEventListener('click', function() {
+            let name = nameInput.value;
+            if (name) {
+                localStorage.setItem('userName', name); // Зберігаємо ім'я в localStorage
+                alert("Ім'я збережено: " + name);
+                // Можна перенаправити на іншу сторінку, наприклад, курс
+                window.location.href = "course-details.html";
+            } else {
+                alert("Будь ласка, введіть своє ім'я.");
+            }
+        });
+    </script>
+</body>
+</html>

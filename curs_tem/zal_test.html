@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .quiz {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            display: flex;
+            margin-left: 30px;
+            margin: 20px 5%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 8%;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Заліковий Тест</h1>
+    </div>
+</header>
+
+<h2>Тест на тему "Основи інформаційної безпеки"</h2>
+<div class="quiz">
+    <div class="question">
+        <p>1. Що таке інформаційна безпека?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question1" value="A"> A) Захист інформації від знищення</li>
+        <li><input type="radio" name="question1" value="B"> B) Комплекс заходів, що забезпечують конфіденційність, цілісність та доступність інформації</li>
+        <li><input type="radio" name="question1" value="C"> C) Захист фізичних носіїв інформації</li>
+    </ul>
+
+    <div class="question">
+        <p>2. Що з перерахованого є загрозою для інформаційної безпеки?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question2" value="A"> A) Віруси</li>
+        <li><input type="radio" name="question2" value="B"> B) Програмне забезпечення</li>
+        <li><input type="radio" name="question2" value="C"> C) Сервери</li>
+    </ul>
+
+    <div class="question">
+        <p>3. Який з наступних методів є найбільш ефективним для захисту паролів?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question3" value="A"> A) Використання простих паролів</li>
+        <li><input type="radio" name="question3" value="B"> B) Використання складних паролів та двофакторна аутентифікація</li>
+        <li><input type="radio" name="question3" value="C"> C) Зберігання паролів на папері</li>
+    </ul>
+
+    <div class="question">
+        <p>4. Що таке фішинг?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question4" value="A"> A) Вірус, який вражає комп'ютер</li>
+        <li><input type="radio" name="question4" value="B"> B) Техніка обману користувачів для отримання конфіденційної інформації</li>
+        <li><input type="radio" name="question4" value="C"> C) Система шифрування даних</li>
+    </ul>
+
+    <div class="question">
+        <p>5. Яка з наступних дій допоможе захистити ваш комп'ютер від вірусів?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question5" value="A"> A) Вимкнути антивірус</li>
+        <li><input type="radio" name="question5" value="B"> B) Регулярно оновлювати антивірусне програмне забезпечення</li>
+        <li><input type="radio" name="question5" value="C"> C) Ігнорувати попередження про загрози</li>
+    </ul>
+
+    <div class="question">
+        <p>6. Що таке шифрування?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question6" value="A"> A) Процес видалення інформації</li>
+        <li><input type="radio" name="question6" value="B"> B) Процес перетворення даних у недоступний вигляд</li>
+        <li><input type="radio" name="question6" value="C"> C) Процес відновлення даних</li>
+    </ul>
+
+    <div class="question">
+        <p>7. Які дані зазвичай підлягають захисту?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question7" value="A"> A) Тільки особисті дані</li>
+        <li><input type="radio" name="question7" value="B"> B) Фінансові, медичні, особисті дані</li>
+        <li><input type="radio" name="question7" value="C"> C) Лише дані, що зберігаються в хмарі</li>
+    </ul>
+
+    <div class="question">
+        <p>8. Що таке VPN?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question8" value="A"> A) Програма для шифрування електронної пошти</li>
+        <li><input type="radio" name="question8" value="B"> B) Віртуальна приватна мережа, яка забезпечує безпечне з’єднання з Інтернетом</li>
+        <li><input type="radio" name="question8" value="C"> C) Програмне забезпечення для редагування відео</li>
+    </ul>
+
+    <div class="question">
+        <p>9. Що слід робити при підозрі на зламаний обліковий запис?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question9" value="A"> A) Залишити все, як є</li>
+        <li><input type="radio" name="question9" value="B"> B) Змінити пароль і увімкнути двофакторну аутентифікацію</li>
+        <li><input type="radio" name="question9" value="C"> C) Почекати, поки проблема вирішиться сама собою</li>
+    </ul>
+
+    <div class="question">
+        <p>10. Яка з цих дій є найбільш небезпечною для інформаційної безпеки?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question10" value="A"> A) Відкриття підозрілих електронних листів</li>
+        <li><input type="radio" name="question10" value="B"> B) Використання унікальних паролів</li>
+        <li><input type="radio" name="question10" value="C"> C) Регулярне оновлення програмного забезпечення</li>
+    </ul>
+</div>
+
+<h2>Тест на тему "Медіаграмотність"</h2>
+<div class="quiz">
+    <div class="question">
+        <p>1. Що таке медіаграмотність?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question11" value="A"> A) Уміння читати книги</li>
+        <li><input type="radio" name="question11" value="B"> B) Здатність критично аналізувати та оцінювати медіа-контент</li>
+        <li><input type="radio" name="question11" value="C"> C) Уміння користуватися комп’ютером</li>
+    </ul>
+
+    <div class="question">
+        <p>2. Який з наступних аспектів медіаграмотності є важливим?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question12" value="A"> A) Вміння розповідати історії</li>
+        <li><input type="radio" name="question12" value="B"> B) Розуміння джерел інформації</li>
+        <li><input type="radio" name="question12" value="C"> C) Вміння створювати презентації</li>
+    </ul>
+
+    <div class="question">
+        <p>3. Що таке "фейкові новини"?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question13" value="A"> A) Правдиві новини</li>
+        <li><input type="radio" name="question13" value="B"> B) Дезінформація, що поширюється під виглядом новин</li>
+        <li><input type="radio" name="question13" value="C"> C) Новини з соціальних мереж</li>
+    </ul>
+
+    <div class="question">
+        <p>4. Як можна перевірити достовірність інформації?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question14" value="A"> A) Залишити все, як є</li>
+        <li><input type="radio" name="question14" value="B"> B) Перевірити джерело та порівняти з іншими інформаційними ресурсами</li>
+        <li><input type="radio" name="question14" value="C"> C) Повірити на слово</li>
+    </ul>
+
+    <div class="question">
+        <p>5. Який з цих видів медіа є найбільш впливовим?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question15" value="A"> A) Телебачення</li>
+        <li><input type="radio" name="question15" value="B"> B) Соціальні мережі</li>
+        <li><input type="radio" name="question15" value="C"> C) Газети</li>
+    </ul>
+
+    <div class="question">
+        <p>6. Що таке медіа-план?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question16" value="A"> A) Документ, що описує структуру медіа-організації</li>
+        <li><input type="radio" name="question16" value="B"> B) Стратегія використання медіа для досягнення певних цілей</li>
+        <li><input type="radio" name="question16" value="C"> C) Список фільмів для перегляду</li>
+    </ul>
+
+    <div class="question">
+        <p>7. Яка з цих ситуацій вимагає медіаграмотності?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question17" value="A"> A) Перегляд новин</li>
+        <li><input type="radio" name="question17" value="B"> B) Спілкування з друзями</li>
+        <li><input type="radio" name="question17" value="C"> C) Створення власного блогу</li>
+    </ul>
+
+    <div class="question">
+        <p>8. Чому важливо аналізувати рекламу?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question18" value="A"> A) Щоб знати, які продукти купувати</li>
+        <li><input type="radio" name="question18" value="B"> B) Щоб зрозуміти, як реклама впливає на нашу поведінку та думки</li>
+        <li><input type="radio" name="question18" value="C"> C) Щоб отримати більше інформації про товари</li>
+    </ul>
+
+    <div class="question">
+        <p>9. Що таке цифрова ідентичність?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question19" value="A"> A) Ім'я користувача в соціальних мережах</li>
+        <li><input type="radio" name="question19" value="B"> B) Вся інформація про особу, доступна в Інтернеті</li>
+        <li><input type="radio" name="question19" value="C"> C) Секретний код для доступу до облікового запису</li>
+    </ul>
+
+    <div class="question">
+        <p>10. Яка з цих дій є етичною у медіа?</p>
+    </div>
+    <ul class="options">
+        <li><input type="radio" name="question20" value="A"> A) Використання чужих ідей без посилання на автора</li>
+        <li><input type="radio" name="question20" value="B"> B) Вказівка на джерела інформації та дотримання авторських прав</li>
+        <li><input type="radio" name="question20" value="C"> C) Поширення чуток</li>
+    </ul>
+</div>
+
+<h2>Надіслати відповіді</h2>
+<div class="button-container">
+    <button type="button" class="btn" onclick="submitQuiz()">Завершити</button>
+</div>
+
+<script>
+function submitQuiz() {
+    const answers = {
+            question1: "B",
+            question2: "A",
+            question3: "B",
+            question4: "B",
+            question5: "B",
+            question6: "B",
+            question7: "B",
+            question8: "B",
+            question9: "B",
+            question10: "A",
+            question11: "B",
+            question12: "B",
+            question13: "B",
+            question14: "B",
+            question15: "B",
+            question16: "B",
+            question17: "C",
+            question18: "B",
+            question19: "B",
+            question20: "B",
+    };
+
+    let score = 0;
+    let allAnswered = true;
+
+    for (const question in answers) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        if (selectedOption) {
+            if (selectedOption.value === answers[question]) {
+                score += 1;
+            }
+        } else {
+            allAnswered = false;
+            alert(`Будь ласка, виберіть відповідь на питання ${question.slice(-1)}.`);
+            break;
+        }
+    }
+
+if (allAnswered) {
+    // Зберігаємо бали для тесту в окремій комірці
+    localStorage.setItem('testScore', score.toString());
+
+    // Показуємо повідомлення про успішне збереження
+    alert("Ваші бали збережено: " + score + "!");
+
+    // Перевіряємо, чи бали більше або дорівнюють 10
+    if (score >= 10) {
+        // Перенаправляємо на іншу сторінку, якщо бали достатні
+        window.location.href = "./sertef.html";
+    } else {
+        // Виводимо повідомлення, якщо бали недостатні
+        alert("Вам потрібно набрати 10 або більше балів, щоб пройти тест.");
+        
+        // Перенаправляємо на сторінку з результатами тесту
+        window.location.href = "../course-details.html"; // Замість "./fail.html" використайте правильну URL
+    }
+}
+}
+</script>
+
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>

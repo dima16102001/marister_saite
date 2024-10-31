@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навчальна платформа</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="script" href="../script.js">
+  <script>
+        // Масив з посиланнями на YouTube відео
+        const videos = [
+            "https://www.youtube.com/embed/XxBnmW4Ewd8",
+            "https://www.youtube.com/embed/0ofC1_m8gcQ",
+            "https://www.youtube.com/embed/Ppqelv3ib1I",
+            "https://www.youtube.com/embed/qQS4nSg9d_4",
+            "https://www.youtube.com/embed/MIQ8aA6CICM",
+            "https://www.youtube.com/embed/tVTZWA-4HNk",
+            "https://www.youtube.com/embed/vktmQdsruN8",
+            "https://www.youtube.com/embed/A7V1217YP2c",
+            "https://www.youtube.com/embed/SIWRSSCp6nY",
+            "https://www.youtube.com/embed/weMs-eoau08",
+
+        ];
+
+        let currentVideoIndex = 0;
+        let viewedVideosCount = 0; // Лічильник переглянутих відео
+
+        // Функція для зміни відео
+        function changeVideo(direction) {
+            currentVideoIndex += direction; // Зміна індексу на основі напрямку
+            if (currentVideoIndex < 0) {
+                currentVideoIndex = videos.length - 1; // Повертаємось до останнього відео
+            } else if (currentVideoIndex >= videos.length) {
+                currentVideoIndex = 0; // Повертаємось до першого відео
+            }
+            const videoFrame = document.getElementById("video-frame");
+            videoFrame.src = videos[currentVideoIndex];
+
+            // Перевірка на перегляд відео
+            if (direction === 1 && viewedVideosCount < videos.length) {
+                viewedVideosCount++; // Збільшуємо лічильник переглянутих відео
+            }
+
+            // Показуємо кнопку завершення, якщо переглянуті всі відео
+            if (viewedVideosCount === videos.length) {
+                document.getElementById("finish-button").style.display = "block";
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("next-button").addEventListener("click", function() {
+                changeVideo(1); // Наступне відео
+            });
+            document.getElementById("prev-button").addEventListener("click", function() {
+                changeVideo(-1); // Попереднє відео
+            });
+
+            // Приховуємо кнопку завершення на старті
+            document.getElementById("finish-button").style.display = "none";
+        };
+    </script>
+</head>
+<body>
+
+
+<header>
+    <div class="header-content">
+        <h1>Медіаграмотність</h1>
+    </div>
+</header>
+
+    <div class="container">
+        <div class="section">
+        <h1>Основи медіаграмотності</h1>
+
+        <p>Медіаграмотність — це здатність розуміти, аналізувати та критично оцінювати медіаінформацію, яка нас оточує. В сучасному світі ця навичка є важливою для захисту від маніпуляцій та дезінформації. Мета цього курсу — надати вам основи медіаграмотності, навчити розпізнавати маніпуляції в медіа, критично мислити і правильно користуватися інформацією. Давайте розглянемо ключові аспекти.</p>
+    </div>
+        <div class="section">
+            <h2>1. Вступ до медіаграмотності</h2>
+            <p>Медіаграмотність є важливою навичкою у суспільстві, де інформація поширюється миттєво, а кожен користувач може стати джерелом новин. Розуміння, як створюються медіа, для чого вони використовуються і які цілі вони можуть переслідувати, є основою медіаграмотності. Даний розділ допоможе зрозуміти роль медіа у формуванні громадської думки, а також як уникати поширення дезінформації та маніпуляцій.</p>
+            <p><strong>Навіщо медіаграмотність потрібна?</strong> Медіаграмотність дозволяє захистити себе від небезпеки, яку несуть фейкові новини, пропаганда та інші види дезінформації. Вона також дає змогу користуватися соціальними мережами відповідально та критично сприймати інформацію.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Як працюють медіа: основи аналізу</h2>
+            <p>Розуміння механізму створення медіа та їхньої мети є ключовим кроком до медіаграмотності. Кожне медіа має свій стиль, мету і аудиторію.</p>
+            <ul>
+                <li><strong>Структура новин:</strong> Заголовок, підзаголовок, основний текст. У заголовку зазвичай розкривається головна тема, але інколи він буває маніпулятивним, покликаним привернути увагу.</li>
+                <li><strong>Типи медіа та їхня мета:</strong> Інформаційні портали, соціальні мережі, блоги тощо. Наприклад, мета блогів може бути персональна чи комерційна, а соціальні мережі часто створені для залучення максимальної уваги.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Як виявляти маніпуляції у медіа</h2>
+            <p>Маніпуляція — це спосіб впливу на аудиторію з метою змінити її думку чи поведінку, часто без чіткого інформування.</p>
+            <ul>
+                <li><strong>Емоційний виклик:</strong> Використання слів та образів, що викликають сильні емоції (страх, злість, співчуття).</li>
+                <li><strong>Чорне й біле:</strong> Поділ на «друзів» та «ворогів», звинувачення у всіх проблемах однієї групи.</li>
+                <li><strong>Фактологічне підтасування:</strong> Використання неправдивих чи перекручених даних, вирваних із контексту цитат.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Фактчекінг: перевірка інформації</h2>
+            <p>Фактчекінг — це процес перевірки фактів і даних, представлених у матеріалах, для підтвердження їхньої правдивості.</p>
+            <ul>
+                <li><strong>Перевірка зображень:</strong> Використання зворотного пошуку зображень для виявлення першоджерела.</li>
+                <li><strong>Перевірка фактів:</strong> Використання спеціалізованих сайтів для перевірки даних та новин.</li>
+                <li><strong>Основи перевірки джерел:</strong> Завжди намагайтеся знайти першоджерело новини чи інформації та перевірити контекст, у якому був поданий матеріал.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. Поведінка у соціальних мережах</h2>
+            <p>Соціальні мережі створюють середовище, де інформація поширюється особливо швидко, а ризики дезінформації дуже високі.</p>
+            <ul>
+                <li><strong>Етика поведінки:</strong> Уважне ставлення до контенту, який ви публікуєте та поширюєте.</li>
+                <li><strong>Як уникати «пасток» соціальних мереж:</strong> Обмежте обсяг особистої інформації, яку ви розміщуєте в мережі, та уникайте поширення неперевірених даних.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Висновок</h2>
+            <p>Медіаграмотність є важливою навичкою, яка дозволяє зберегти критичний погляд на інформацію і уникати маніпуляцій. У сучасному світі ці знання допоможуть захиститися від дезінформації, відповідально користуватися інформацією та уникати пасток соціальних мереж. Постійне вдосконалення медіаграмотності сприяє формуванню здорового інформаційного середовища.</p>
+        </div>
+    </div>
+    
+<main>
+    <section id="course-details">
+        <h1>Для проходження курсу пергляньте відеоролики "Основи інформаційної безпеки"</h1>
+            <div id="video-container">
+                <iframe id="video-frame" class="video-frame" src="https://www.youtube.com/embed/XxBnmW4Ewd8" title="Very Verified: онлайн-курс з медіаграмотності. Серія 1 - Вітаємо на курсі Very Verified" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="button-container">
+            <button class="prev-button" id="prev-button">Попереднє відео</button>
+            <button class="next-button" id="next-button">Наступне відео</button>
+            <a href="../course-details.html" class="btn" id="finish-button">Завершити</a>
+        </div>
+        <h3 style="color:red;">Щоб завершити перегляньте всі відео</h3>
+    </section>
+</main>
+</div>
+
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+</body>
+</html>
