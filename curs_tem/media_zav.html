@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+     <title>Інтерактивні завдання з медіаграмотності</title>
+    <style>    
+        <style>
+        h2 {
+            color: #2c3e50;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #feedback, #phishing-feedback, #hint, #result,
+        #headline-feedback, #fact-check-feedback, #manipulation-feedback {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .dropzone {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+        }
+        #timer {
+            font-size: 18px;
+            color: #e74c3c;
+        }
+        .quiz {
+            margin: 2px 0;
+            padding: 2px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            display: flex;
+            margin: 20px 5%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 8%;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+    </style>
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <h1>Інтерактивні завдання з інформаційної безпеки</h1>
+    </div>
+    </header>
+    <!-- Завдання з вибору джерела -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Яке джерело є найбільш достовірним для перевірки новин?</h2>
+        <button class="btn" onclick="checkSource('social')">Пост у соціальних мережах</button>
+        <button class="btn" onclick="checkSource('news-site')">Офіційний сайт новин</button>
+        <button class="btn" onclick="checkSource('blog')">Особистий блог</button>
+        <p id="feedback"></p>
+    </ul>
+    </div>
+
+    <!-- Аналіз заголовків -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Перетягніть заголовок у правильну категорію:</h2>
+        <div id="headline" draggable="true" ondragstart="drag(event)">"Шокуюча правда про ваше здоров'я, про яку вам не розповідають!"</div>
+        <div class="dropzone" ondrop="drop(event, 'sensational')" ondragover="allowDrop(event)">Сенсаційний</div>
+        <div class="dropzone" ondrop="drop(event, 'neutral')" ondragover="allowDrop(event)">Нейтральний</div>
+        <p id="headline-feedback"></p>
+    </ul>
+    </div>
+
+    <!-- Розпізнавання маніпуляцій -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Ви бачите новину із заголовком: "Політик X: я зроблю Україну найкращою країною в світі". Чи це маніпуляція?</h2>
+        <button class="btn" onclick="evaluateManipulation('yes')">Так</button>
+        <button class="btn" onclick="evaluateManipulation('no')">Ні</button>
+        <p id="manipulation-feedback"></p>
+    </ul>
+    </div>
+
+    <!-- Завдання на перевірку фактів -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Чи слід вам довіряти новині без додаткових джерел?</h2>
+        <button class="btn" onclick="evaluateFactCheck('no')">Ні</button>
+        <button class="btn" onclick="evaluateFactCheck('yes')">Так</button>
+        <p id="fact-check-feedback"></p>
+    </ul>
+    </div>
+    <h2>Завершити</h2>
+<div class="button-container">
+    <a href="../course-details.html" class="btn">Завершити</a>
+</div>
+
+    <script>
+        // Завдання з вибору джерела
+        function checkSource(source) {
+            const feedback = document.getElementById('feedback');
+            if (source === 'news-site') {
+                feedback.textContent = 'Правильно! Офіційний сайт новин є надійним джерелом.';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = 'Неправильно, спробуйте ще раз.';
+                feedback.className = 'incorrect';
+            }
+        }
+
+        // Аналіз заголовків
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event, category) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const feedback = document.getElementById('headline-feedback');
+            if (category === 'sensational') {
+                feedback.textContent = 'Правильно! Це сенсаційний заголовок.';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = 'Неправильно, спробуйте ще раз.';
+                feedback.className = 'incorrect';
+            }
+        }
+
+        // Розпізнавання маніпуляцій
+        function evaluateManipulation(answer) {
+            const feedback = document.getElementById('manipulation-feedback');
+            if (answer === 'yes') {
+                feedback.textContent = 'Правильно! Це маніпулятивний заголовок.';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = 'Неправильно, будьте обережні з маніпуляціями.';
+                feedback.className = 'incorrect';
+            }
+        }
+
+        // Завдання на перевірку фактів
+        function evaluateFactCheck(answer) {
+            const feedback = document.getElementById('fact-check-feedback');
+            if (answer === 'no') {
+                feedback.textContent = 'Правильно! Завжди перевіряйте новини з додаткових джерел.';
+                feedback.className = 'correct';
+            } else {
+                feedback.textContent = 'Неправильно, краще перевіряти новини.';
+                feedback.className = 'incorrect';
+            }
+        }
+    </script>
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>

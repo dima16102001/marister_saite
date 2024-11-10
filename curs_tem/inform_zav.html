@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Інтерактивні завдання з інформаційної безпеки</title>
+    <style>
+        h2 {
+            color: #2c3e50;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #feedback, #phishing-feedback, #hint, #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .dropzone {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 10px;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+        }
+        #timer {
+            font-size: 18px;
+            color: #e74c3c;
+        }
+        .quiz {
+            margin: 2px 0;
+            padding: 2px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .question {
+            display: flex;
+            margin-left: 30px;
+            margin: 20px 5%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 8%;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+    <div class="header-content">
+    <h1>Інтерактивні завдання з інформаційної безпеки</h1>
+    </div>
+</header>
+
+    <!-- Завдання з паролями -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Виберіть найбільш надійний пароль:</h2>
+        <button class="btn" onclick="checkPassword('12345')">12345</button>
+        <button class="btn" onclick="checkPassword('password')">password</button>
+        <button class="btn" onclick="checkPassword('P@ssw0rd!2023')">P@ssw0rd!2023</button>
+        <p id="feedback"></p>
+        </ul>
+    </div>
+
+    <!-- Симуляція фішингових повідомлень -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Перетягніть повідомлення в правильну категорію:</h2>
+        <div id="email" draggable="true" ondragstart="drag(event)">Ваш рахунок призупинено. <a href="#">Натисніть тут для активації</a>.</div>
+        <div class="dropzone" ondrop="drop(event, 'safe')" ondragover="allowDrop(event)">Безпечне</div>
+        <div class="dropzone" ondrop="drop(event, 'phishing')" ondragover="allowDrop(event)">Фішинг</div>
+        <p id="phishing-feedback"></p>
+    </ul>
+    </div>
+
+    <!-- Квест "Захисти свій профіль" -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Етап 1: Налаштуйте свій профіль безпеки</h2>
+        <p>Як ви налаштуєте видимість профілю?</p>
+        <button class="btn" onclick="nextStage()">Зробити профіль видимим лише для друзів</button>
+        <button class="btn" onclick="showHint()">Залишити відкритим для всіх</button>
+        <p id="hint"></p>
+    </ul>
+    </div>
+
+    <!-- Міні-гра "Безпечний інтернет" -->
+    <div class="quiz">
+        <ul class="options">
+        <h2>Чи слід відкривати вкладення з листа від невідомого відправника?</h2>
+        <button class="btn" onclick="evaluateAnswer('no')">Ні</button>
+        <button class="btn" onclick="evaluateAnswer('yes')">Так</button>
+        <p id="result"></p>
+    </ul>
+    </div>
+<h2>Завершити</h2>
+<div class="button-container">
+    <a href="../course-details.html" class="btn">Завершити</a>
+</div>
+
+    <script>
+        // Завдання з паролями
+        function checkPassword(password) {
+            const feedback = document.getElementById('feedback');
+            if (password === 'P@ssw0rd!2023') {
+                feedback.textContent = 'Правильно! Це надійний пароль.';
+            } else {
+                feedback.textContent = 'Неправильно, спробуйте ще раз.';
+            }
+        }
+
+        // Симуляція фішингових повідомлень
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event, category) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const feedback = document.getElementById('phishing-feedback');
+            if (category === 'phishing') {
+                feedback.textContent = 'Правильно! Це фішингове повідомлення.';
+            } else {
+                feedback.textContent = 'Неправильно, спробуйте ще раз.';
+            }
+        }
+
+        // Квест "Захисти свій профіль"
+        function nextStage() {
+            document.getElementById('hint').textContent = 'Відмінний вибір! Ви налаштували безпечний профіль.';
+        }
+
+        function showHint() {
+            document.getElementById('hint').textContent = 'Спробуйте інший варіант для більшої безпеки.';
+        }
+
+
+        function evaluateAnswer(answer) {
+            if (answer === 'no') {
+                document.getElementById('result').textContent = 'Правильно!';
+            } else {
+                document.getElementById('result').textContent = 'Неправильно, будьте обережні з вкладеннями.';
+            }
+        }
+
+        countdown();
+    </script>
+
+<footer id="contact">
+    <h2>Контакти</h2>
+    <p>Email: dimakonotop0000@gmail.com</p>
+    <b><p><a href="https://t.me/Lkjggyv" style="color: green;">>>>>>>>>>_Telegram_<<<<<<<<<</a></p>
+    <p>&copy; 2024 Навчальна платформа</p>
+</footer>
+
+</body>
+</html>
